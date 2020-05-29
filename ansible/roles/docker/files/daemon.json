@@ -1,0 +1,10 @@
+{
+    "iptables": false,
+    "debug": false,
+    "insecure-registries": [
+        "nexus-docker-registry.openshift.atliwest.local",
+        "nexus-test-docker-registry.openshift.atliwest.local",
+        "quay.io",
+        "registry.redhat.io"
+    ]
+}

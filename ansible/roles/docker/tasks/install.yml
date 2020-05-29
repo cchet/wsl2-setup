@@ -1,0 +1,37 @@
+- name: "Uninstall old docker packages"
+  apt:
+    name: "{{ item }}"
+    state: absent
+    update_cache: yes
+  loop:
+    - docker
+    - docker-engine
+    - docker.io 
+    - containerd 
+    - runc
+
+- name: Add an Apt signing key, uses whichever key is at the URL
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+    state: present  
+
+- name: ""
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/debian buster stable
+    state: present
+    filename: docker-debian
+
+- name: "Install packages"
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - gnupg-agent
+    - software-properties-common
+    - docker-ce 
+    - docker-ce-cli 
+    - containerd.io

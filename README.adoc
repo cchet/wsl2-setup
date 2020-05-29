@@ -1,0 +1,25 @@
+= WSL2 Debian Setup 
+
+This repository holdaholds the setup resources for the WSL2 Debian instance
+
+== Ansible
+
+=== Setup
+
+Execute ``./install-ansible.sh`` on the WSL2 instance, whereby the repository can be checked out on the Windows host.
+
+=== Execute 
+
+Execute the following command in the directory link:./ansible[./ansible] to setup the WSL2 Debian instance with Ansible.
+
+* ``win_home`` +
+  Is the directory for the nevironment variablesvariable ``WIN_HOME`` which is set for all users
+* ``win_home`` +
+  Is the fully qualified path to your openssh private key file 
+
+[code, bash]
+----
+ansible-playbook site.yml --ask-become-pass -e sudo_user=<SUDO_USER> -e win_home=<PATH_TO_WIN_DIRECTORY> -e id_rsa=<PATH_TO_OPEN_SSH_KEY_FILE>
+----
+
+TIP: You can reach the Windows folders under ``/mnt/c/..``. 

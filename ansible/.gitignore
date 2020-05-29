@@ -1,0 +1,5 @@
+# Directory exclusions
+.vagrant/
+
+# File exclusion
+*.retry

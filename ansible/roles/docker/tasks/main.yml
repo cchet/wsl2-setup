@@ -1,0 +1,7 @@
+# Install 'docker'
+- include: install.yml
+
+# Configure 'docker'
+- include: configure.yml
+  notify: 
+    - restart-docker

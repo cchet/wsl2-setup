@@ -1,0 +1,39 @@
+- name: "Set core.editor = 'nano'"
+  become: yes
+  become_user: "{{ git_username }}"
+  git_config:
+    name: core.editor
+    scope: global
+    value: "nano"
+    
+- name: "Set git core.autocrlf = input"
+  become: yes
+  become_user: "{{ git_username }}"
+  git_config:
+    name: core.autocrlf
+    scope: global
+    value: "input"
+    
+- name: "Set git user.name = {{ git_username }}"
+  become: yes
+  become_user: "{{ git_username }}"
+  git_config:
+    name: user.name
+    scope: global
+    value: "{{ git_username }}"
+
+- name: "Set git user.email = {{ git_email }}"
+  become: yes
+  become_user: "{{ git_username }}"
+  git_config:
+    name: user.email
+    scope: global
+    value: "{{ git_email }}"
+
+- name: "Set git http.sslVerify = {{ git_http_ssl_verify }}"
+  become: yes
+  become_user: "{{ git_username }}"
+  git_config:
+    name: http.sslVerify
+    scope: global 
+    value: "{{ git_http_ssl_verify }}"

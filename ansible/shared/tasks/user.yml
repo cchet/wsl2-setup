@@ -1,0 +1,44 @@
+- name: "Create the group '{{ username }}'"
+  group:
+    name: "{{ username }}"
+    state: present
+
+- name: "Create user '{{ username }}'"
+  user:
+     name: "{{ username }}"
+     shell: /bin/bash
+     createhome: yes
+     group: "{{ group }}"
+     force: no
+     remove: no
+
+- name: "Set proper permissions on '/home/{{ username }}'"
+  file:
+    path: "/home/{{ username }}"
+    state: "directory"
+    owner: "{{ username }}"
+    group: "{{ group }}"
+    mode: 0755
+
+- name: "Set proper permissions on '/home/{{ username }}'"
+  file:
+    path: "/home/{{ username }}.ssh"
+    state: "directory"
+    owner: "{{ username }}"
+    group: "{{ group }}"
+    mode: 0700
+
+- name: "Add provided id_rsa '/home/{{ username }}/.ssh/id_rsa'"
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    force: yes
+    owner: "{{ username }}"
+    group: "{{ group }}"
+    mode: 0600
+  with_items:
+    - { src: "../templates/.bashrc", dest: "/home/{{ username }}/.bashrc" }
+    - { src: "{{ id_rsa }}", dest: "/home/{{ username }}/.ssh/id_rsa" }
+
+- name: "Create ssh public key from the provided private key"
+  shell: "ssh-keygen -y -f /home/{{ username }}/.ssh/id_rsa > /home/{{ username }}/.ssh/id_rsa.pub"

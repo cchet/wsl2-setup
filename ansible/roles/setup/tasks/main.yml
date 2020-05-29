@@ -1,0 +1,32 @@
+- name: "Create global groups"
+  group:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "docker"
+
+- name: "Install global packages"
+  yum:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop:
+    - git
+    - gpg
+
+- name: "Copy root files"
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    force: yes
+    owner: "root"
+    group: "root"
+    mode: 0770
+  with_items:
+    - { src: "../../../shared/templates/.bashrc", dest: "/root/.bashrc" }
+
+- name: "Create Liwest user"
+  include: ../../../shared/tasks/user.yml
+  vars:
+    username: "liwest"
+    group: "docker"

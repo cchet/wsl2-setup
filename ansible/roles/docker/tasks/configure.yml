@@ -1,0 +1,15 @@
+- name: "Create '/etc/docker/'"
+  file:
+    path: "/etc/docker"
+    state: "directory"
+    owner: "root"
+    group: "root"
+    mode: 0770
+
+- name: Add docker daemon configuration
+  copy:
+    src: "../files/daemon.json"
+    dest: "/etc/docker/daemon.json"
+    owner: "root"
+    group: "root"
+    force: yes

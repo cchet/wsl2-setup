@@ -1,0 +1,19 @@
+# directories
+.settings/
+
+/tools/
+out/
+target/
+.idea/
+.vscode/
+.vagrant/
+# filetypes
+*.ear
+*.jar
+*.war
+*.class
+*.iml
+*.tar
+*.zip
+.project
+*.retry
