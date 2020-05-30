@@ -5,10 +5,4 @@
     mode: '0755'
     owner: root
     group: root
-  when: kind_version is defined and kind_version != ''
 
-- name: "Remove kind '{{ kind_version }}'"
-  file:
-    path: "/usr/local/bin/kind"
-    state: "absent"
-  when: kind_version is not defined or kind_version == ''

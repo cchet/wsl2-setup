@@ -1,0 +1,4 @@
+- name: "Install Podman on Debian"
+  include_role:
+    name: podman-debian
+  when: os == 'debian'

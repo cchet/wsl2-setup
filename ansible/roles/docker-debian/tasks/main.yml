@@ -1,7 +1,7 @@
-# Install 'docker'
-- include: install.yml
-
-# Configure 'docker'
-- include: configure.yml
-  notify: 
-    - restart-docker
+- name: "Install Docker"
+  include: install.yml
+  vars:
+    state: present
+    
+- name: "Configure Docker"
+  include: configure.yml
