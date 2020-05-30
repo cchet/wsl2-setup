@@ -8,3 +8,5 @@
     - setup
     - admin
     - docker
+    - kind
+  

@@ -38,10 +38,13 @@ sudo_user: ""
 win_home: ""
 # The fully qualified mounted Windows path to the openssh private key file
 id_rsa: ""
-# The list of addditional users to create (optional)
+# (Optional) The list of addditional users to create
 users:
     - additional_user1
     - additional_user2
+# (Optional) The version of kind provided by the github repository
+# If empty or not set then kind will be removed
+kind_version: "v0.8.1"
 ----
 
 Execute the following command in the directory link:./ansible[./ansible] to setup the WSL2 Debian instance with Ansible.
@@ -69,3 +72,8 @@ sudo service docker start
 -----
 docker ps
 -----
+
+== Kind
+
+``kind`` is a tool for povisioning a single node Kubernetes Cluster in Docker. +
+See link:https://kind.sigs.k8s.io/docs[Kind Doc] for the documentation of kind.
