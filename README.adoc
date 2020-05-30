@@ -6,7 +6,7 @@ This repository holds the resources for the setting up a WSL2 instance.
 
 === Setup
 
-Execute ``./install-ansible-<OS>.sh`` on the WSL2 instance, whereby the repository can be checked out on the Windows host.
+Execute ``./install-ansible-<OS>.sh`` with a sudo user on the WSL2 instance, whereby the repository can be checked out on the Windows host.
 
 Supported OS:
 
