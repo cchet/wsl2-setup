@@ -14,7 +14,7 @@ Supported OS:
 
 === Execute 
 
-Create a ``<PREFIX>variables.[yml|yaml]`` file in the ``./ansible`` directory which contains the necessary variables.
+Create a ``variables.yml`` file in the ``./ansible`` directory which contains the necessary variables. You can have multiple variable definitions but you should name them ``<PREFIX>variables.[yml|yaml]`` which are excluded for git.
 
 .YAML configuration file 
 [code, yaml]
