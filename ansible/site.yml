@@ -9,4 +9,5 @@
     - admin
     - docker
     - kind
+    - podman
   

@@ -22,6 +22,14 @@ The following roles are supported by this ansible bundle.
   Sets up your sudo user
 * ``docker`` +
   Delegates to the proper ``docker-<OS>`` role depending on the set variable ``os`` 
+* ``docker-debian`` +
+  Installs Docker globally on a debian OD 
+* ``kind`` +
+  Install kind globally 
+* ``podman`` +
+  Delegates to the proper ``podman-<OS>`` role depending on the set variable ``os`` 
+* ``podman-debian`` +
+  Install the tool Podman globally
 
 === Execute 
 
@@ -38,13 +46,12 @@ sudo_user: ""
 win_home: ""
 # The fully qualified mounted Windows path to the openssh private key file
 id_rsa: ""
+# The version of kind provided by the github repository
+kind_version: "v0.8.1"
 # (Optional) The list of addditional users to create
 users:
     - additional_user1
     - additional_user2
-# (Optional) The version of kind provided by the github repository
-# If empty or not set then kind will be removed
-kind_version: "v0.8.1"
 ----
 
 Execute the following command in the directory link:./ansible[./ansible] to setup the WSL2 Debian instance with Ansible.
@@ -77,3 +84,16 @@ docker ps
 
 ``kind`` is a tool for povisioning a single node Kubernetes Cluster in Docker. +
 See link:https://kind.sigs.k8s.io/docs[Kind Doc] for the documentation of kind.
+
+== Podman
+
+``Podman`` is a tool similar to Docker but doesn't rely on a daemon to manage containers. +
+See link:https://podman.io/[Podman doc] for the documentation of Podman.
+
+.Test if Podmanis working
+[source,bash]
+-----
+podman run hello-world
+-----
+
+TIP: Podman and Docker don't share the same registry so container images get downloaded either for Podman or Docker
