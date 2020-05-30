@@ -29,9 +29,9 @@
     group: "{{ group }}"
     mode: 0755
 
-- name: "Set proper permissions on '/home/{{ username }}/.ssh'"
+- name: "Create '/home/{{ username }}/.ssh'"
   file:
-    path: "/home/{{ username }}.ssh"
+    path: "/home/{{ username }}/.ssh"
     state: "directory"
     owner: "{{ username }}"
     group: "{{ group }}"
