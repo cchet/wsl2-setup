@@ -1,4 +1,5 @@
-- hosts: localhost
+- hosts: 
+    - localhost
   remote_user: "{{ sudo_user }}"
   gather_facts: yes
   become: yes

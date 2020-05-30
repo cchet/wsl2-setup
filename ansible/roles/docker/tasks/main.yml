@@ -1,7 +1,4 @@
-# Install 'docker'
-- include: install.yml
-
-# Configure 'docker'
-- include: configure.yml
-  notify: 
-    - restart-docker
+- name: "Install Docker on Debian"
+  include_role:
+    name: docker-debian
+  when: os == 'debian'

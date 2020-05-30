@@ -1,25 +1,44 @@
 = WSL2 Debian Setup 
 
-This repository holdaholds the setup resources for the WSL2 Debian instance
+This repository holds the resources for the setting up a WSL2 instance.
 
 == Ansible
 
 === Setup
 
-Execute ``./install-ansible.sh`` on the WSL2 instance, whereby the repository can be checked out on the Windows host.
+Execute ``./install-ansible-<OS>.sh`` on the WSL2 instance, whereby the repository can be checked out on the Windows host.
+
+Supported OS:
+
+* ``debian``
 
 === Execute 
 
+Create a ``<PREFIX>variables.[yml|yaml]`` file in the ``./ansible`` directory which contains the necessary variables.
+
+.YAML configuration file 
+[code, yaml]
+----
+# The OS you want to install docker on [debian]
+os: ""
+# The sudo user of your WSL2 instance (not root)
+sudo_user: ""
+# The fully qualified mounted Windows path linked to /home/<username>/win
+win_home: ""
+# The fully qualified mounted Windows path to the openssh private key file
+id_rsa: ""
+# The list of addditional users to create (optional)
+users:
+    - additional_user1
+    - additional_user2
+----
+
 Execute the following command in the directory link:./ansible[./ansible] to setup the WSL2 Debian instance with Ansible.
 
-* ``win_home`` +
-  Is the directory for the nevironment variablesvariable ``WIN_HOME`` which is set for all users
-* ``win_home`` +
-  Is the fully qualified path to your openssh private key file 
-
+.Shell command for executing the bundle
 [code, bash]
 ----
-ansible-playbook site.yml --ask-become-pass -e sudo_user=<SUDO_USER> -e win_home=<PATH_TO_WIN_DIRECTORY> -e id_rsa=<PATH_TO_OPEN_SSH_KEY_FILE>
+ansible-playbook site.yml -e @variables.yml -e id_rsa_pass=<SSH_PRIVATE_KEY_PASS>
 ----
 
 TIP: You can reach the Windows folders under ``/mnt/c/..``. 

@@ -20,7 +20,16 @@
     group: "{{ group }}"
     mode: 0755
 
-- name: "Set proper permissions on '/home/{{ username }}'"
+- name: "Symlink to Windows Home '/home/{{ username }}/win'"
+  file:
+    src: "{{ win_home }}"
+    path: "/home/{{ username }}/win"
+    state: "link"
+    owner: "{{ username }}"
+    group: "{{ group }}"
+    mode: 0755
+
+- name: "Set proper permissions on '/home/{{ username }}/.ssh'"
   file:
     path: "/home/{{ username }}.ssh"
     state: "directory"
@@ -41,4 +50,7 @@
     - { src: "{{ id_rsa }}", dest: "/home/{{ username }}/.ssh/id_rsa" }
 
 - name: "Create ssh public key from the provided private key"
-  shell: "ssh-keygen -y -f /home/{{ username }}/.ssh/id_rsa > /home/{{ username }}/.ssh/id_rsa.pub"
+  expect: 
+    command: "/bin/bash -c 'ssh-keygen -y -f /home/{{ username }}/.ssh/id_rsa > /home/{{ username }}/.ssh/id_rsa.pub'"
+    responses:
+      (.*)pass(.*): "{{ id_rsa_pass }}"

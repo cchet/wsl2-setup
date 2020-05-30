@@ -6,7 +6,7 @@
     - "docker"
 
 - name: "Install global packages"
-  yum:
+  package:
     name: "{{ item }}"
     state: present
     update_cache: yes
@@ -25,8 +25,12 @@
   with_items:
     - { src: "../../../shared/templates/.bashrc", dest: "/root/.bashrc" }
 
-- name: "Create Liwest user"
+- name: "Create users"
+  when: users is defined
   include: ../../../shared/tasks/user.yml
   vars:
-    username: "liwest"
+    username: "{{ user }}"
     group: "docker"
+  with_items: "{{ users }}"
+  loop_control:
+    loop_var: user

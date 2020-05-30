@@ -17,3 +17,5 @@ target/
 *.zip
 .project
 *.retry
+*variables.yml
+*variables.yaml
