@@ -12,6 +12,17 @@ Supported OS:
 
 * ``debian``
 
+=== Roles
+
+The following roles are supported by this ansible bundle.
+
+* ``setup`` +
+  Installs global packages, modifies the root user and creates the additional users
+* ``admin`` +
+  Sets up your sudo user
+* ``docker`` +
+  Delegates to the proper ``docker-<OS>`` role depending on the set variable ``os`` 
+
 === Execute 
 
 Create a ``variables.yml`` file in the ``./ansible`` directory which contains the necessary variables. You can have multiple variable definitions but you should name them ``<PREFIX>variables.[yml|yaml]`` which are excluded for git.
