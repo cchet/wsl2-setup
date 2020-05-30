@@ -1,15 +1,15 @@
-- name: Add an Apt signing key, uses whichever key is at the URL
+- name: "Add Podman repository gpg key"
   apt_key:
     url: https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/Release.key
     state: "{{ state }}" 
 
-- name: ""
+- name: "Add Podman repository"
   apt_repository:
     repo: deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/ /
     state: "{{ state }}"
     filename: podman-debian
 
-- name: "Install packages"
+- name: "Install Podman packages"
   apt:
     name: "{{ item }}"
     state: "{{ state }}"

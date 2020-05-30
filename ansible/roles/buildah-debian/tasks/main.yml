@@ -1,4 +1,4 @@
-- name: "Install Podman"
+- name: "Install Buildah"
   include: install.yml
   vars:
     state: present
