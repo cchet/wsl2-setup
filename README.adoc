@@ -53,3 +53,19 @@ ansible-playbook site.yml -e @variables.yml -e id_rsa_pass=<SSH_PRIVATE_KEY_PASS
 ----
 
 TIP: You can reach the Windows folders under ``/mnt/c/..``. 
+
+== Docker
+
+You need to start docker manually since we don't have a systemd managed OS, meaning the OS never starts up.
+
+.Start the Docker service
+[source,bash]
+-----
+sudo service docker start
+-----
+
+.Test if Docker is up and running
+[source,bash]
+-----
+docker ps
+-----
