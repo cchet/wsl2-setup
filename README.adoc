@@ -1,4 +1,4 @@
-= WSL2 Debian Setup 
+= WSL2 Setup 
 
 This repository holds the resources for the setting up a WSL2 instance.
 
