@@ -30,6 +30,10 @@ The following roles are supported by this ansible bundle.
   Delegates to the proper ``podman-<OS>`` role depending on the set variable ``os`` 
 * ``podman-debian`` +
   Install the tool Podman globally
+* ``buildah`` +
+  Delegates to the proper ``buildah-<OS>`` role depending on the set variable ``os`` 
+* ``buildah-debian`` +
+  Install the tool Buildah globally
 
 === Execute 
 
@@ -97,3 +101,8 @@ podman run hello-world
 -----
 
 TIP: Podman and Docker don't share the same registry so container images get downloaded either for Podman or Docker
+
+== Buildah 
+
+``Buildah`` is a tool for managing Container Images without Docker. It mostly replaces the Dockerfile and allows you to build Container images in a shell script. +
+See link:https://buildah.io/[Buildah doc] for the documentation of Buildah.
