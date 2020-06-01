@@ -1,10 +1,3 @@
-- name: "Create global groups"
-  group:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - "docker"
-
 - name: "Remove obsolete global packages"
   package:
     name: "{{ item }}"
@@ -23,34 +16,12 @@
     state: present
     update_cache: yes
   with_items:
-      - git
       - gpg
       - apt-transport-https
       - ca-certificates
       - curl
       - gnupg-agent
       - software-properties-common
-    
-- name: "Copy root files"
-  template:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-    force: yes
-    owner: "root"
-    group: "root"
-    mode: 0770
-  with_items:
-    - { src: "../../../shared/templates/.bashrc", dest: "/root/.bashrc" }
-
-- name: "Create users"
-  when: users is defined
-  include: ../../../shared/tasks/user.yml
-  vars:
-    username: "{{ user }}"
-    group: "docker"
-  with_items: "{{ users }}"
-  loop_control:
-    loop_var: user
 
 - name: "Debian specific setup"
   include: setup-debian.yml

@@ -133,3 +133,4 @@ fi
 export EDITOR=nano
 export LANG=en_US.UTF-8
 export PROMPT_DIRTRIM=1
+export WIN_HOME={{ win_home }}

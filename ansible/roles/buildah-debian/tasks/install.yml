@@ -7,7 +7,7 @@
   apt_repository:
     repo: deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/ /
     state: "{{ state }}"
-    filename: buildah-debian
+    filename: kubic-debian
 
 - name: "Install Buildah packages"
   apt:

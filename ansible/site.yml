@@ -6,7 +6,8 @@
   become_method: sudo
   roles:
     - setup
-    - admin
+    - git
+    - user
     - kind
     - podman
     - docker

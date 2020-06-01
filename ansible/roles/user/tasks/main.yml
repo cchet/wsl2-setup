@@ -1,0 +1,21 @@
+
+- name: "Manage groups"
+  group:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ groups }}"
+  loop_control:
+    loop_var: "item"
+  when: groups is defined and groups | length > 0
+
+- name: "Manage users"
+  include: user.yml
+  vars:
+    username: "{{ user.name }}"
+    group: "docker"
+    aliases: "{{ user.aliases  | default([]) }}"
+    additional_groups: "{{ user.groups  | default([]) }}"
+  with_items: "{{ users }}"
+  loop_control:
+    loop_var: user
+  when: users is defined and users | length > 0

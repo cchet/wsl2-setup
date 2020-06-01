@@ -7,7 +7,7 @@
   apt_repository:
     repo: deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/ /
     state: "{{ state }}"
-    filename: podman-debian
+    filename: kubic-debian
 
 - name: "Install Podman packages"
   apt:

@@ -27,9 +27,11 @@ Docker on Debian 10 (Buster) down't work with ``iptables=true``, which is due to
 The following roles are supported by this ansible bundle.
 
 * ``setup`` +
-  Installs global packages, modifies the root user and creates the additional users
-* ``admin`` +
-  Sets up your sudo user
+  Installs global packages and performs global setup
+* ``git`` +
+  Configures system git system wide
+* ``user`` +
+  Creates/modifies the users
 * ``docker`` +
   Delegates to the proper ``docker-<OS>`` role depending on the set variable ``os`` 
 * ``docker-debian`` +
@@ -64,12 +66,26 @@ sudo_user: ""
 win_home: ""
 # The fully qualified mounted Windows path to the openssh private key file
 id_rsa: ""
+# Global git settings (nano is default editor)
+git_username: ""
+git_email: ""
+git_http_ssl_verify: "true|false"
 # The version of kind provided by the github repository
 kind_version: "v0.8.1"
-# (Optional) The list of addditional users to create
+# (Optional) The additional groups to create. Necessary is referenced by users
+groups: 
+  - docker
+# (Optional) The list of addditional users to create or existing to modify
 users:
-    - additional_user1
-    - additional_user2
+    - name: ""
+      # (Optional) the additional groups to assign the user too, must exist or be defined in 'groups' parameter
+      groups:
+        - sudo 
+        - docker
+      # (Optional) the aliases to define for the user
+      aliases:
+        - alias: ""
+          cmd: ""
 ----
 
 TIP: You can reach the Windows folders under ``/mnt/c/..``. 
