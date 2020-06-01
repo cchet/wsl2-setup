@@ -12,6 +12,12 @@ Supported OS:
 
 * ``debian``
 
+== OS specific setup
+
+=== Debian
+
+Docker on Debian 10 (Buster) down't work with ``iptables=true``, which is due to the new iptables implementation. Therefore this bundle will set the iptables alternative to ``iptables-legacy``.
+
 === Roles
 
 The following roles are supported by this ansible bundle.
