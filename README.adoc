@@ -111,6 +111,12 @@ docker run hello-world
 ``kind`` is a tool for povisioning a single node Kubernetes Cluster in Docker. +
 See link:https://kind.sigs.k8s.io/docs[Kind Doc] for the documentation of kind.
 
+.Test if kind works
+[source,bash]
+-----
+kind -h
+-----
+
 == Podman
 
 ``Podman`` is a tool similar to Docker but doesn't rely on a daemon to manage containers. +
@@ -134,4 +140,15 @@ See link:https://buildah.io/[Buildah doc] for the documentation of Buildah.
 -----
 cd ./test/buildah
 buildah bud -t test-buildah:latest .
+-----
+
+== Kubectl 
+
+``Kubectl`` is a the CLI for managing Kubernetes clusters. +
+See link:https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands[Kubectl Commands] for the command reference of Kubectl.
+
+.Test if kubectl works
+[source,bash]
+-----
+kubectl -h
 -----
