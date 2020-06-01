@@ -3,13 +3,13 @@
     url: https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/Debian_10/Release.key
     state: "{{ state }}" 
 
-- name: "Add Podman repository"
+- name: "Add Buildah repository"
   apt_repository:
     repo: deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/ /
     state: "{{ state }}"
     filename: buildah-debian
 
-- name: "Install Podman packages"
+- name: "Install Buildah packages"
   apt:
     name: "{{ item }}"
     state: "{{ state }}"
