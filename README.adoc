@@ -23,17 +23,17 @@ The following roles are supported by this ansible bundle.
 * ``docker`` +
   Delegates to the proper ``docker-<OS>`` role depending on the set variable ``os`` 
 * ``docker-debian`` +
-  Installs Docker globally on a debian OD 
+  Installs Docker globally on a Debian OS
 * ``kind`` +
   Install kind globally 
 * ``podman`` +
   Delegates to the proper ``podman-<OS>`` role depending on the set variable ``os`` 
 * ``podman-debian`` +
-  Install the tool Podman globally
+  Install the tool Podman globally on a Debian OS
 * ``buildah`` +
   Delegates to the proper ``buildah-<OS>`` role depending on the set variable ``os`` 
 * ``buildah-debian`` +
-  Install the tool Buildah globally
+  Install the tool Buildah globally on a Debian OS
 
 === Execute 
 
