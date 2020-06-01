@@ -63,7 +63,7 @@ Execute the following command in the directory link:./ansible[./ansible] to setu
 .Shell command for executing the bundle
 [code, bash]
 ----
-ansible-playbook site.yml -e @variables.yml -e id_rsa_pass=<SSH_PRIVATE_KEY_PASS>
+ansible-playbook site.yml --ask-become-pass -e @variables.yml -e id_rsa_pass=<SSH_PRIVATE_KEY_PASS>
 ----
 
 TIP: You can reach the Windows folders under ``/mnt/c/..``. 

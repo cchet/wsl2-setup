@@ -7,7 +7,7 @@
   roles:
     - setup
     - admin
-    - docker
     - kind
     - podman
+    - docker
     - buildah 

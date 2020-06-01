@@ -1,5 +1,5 @@
 {
-    "iptables": false,
+    "iptables": true,
     "debug": false,
     "insecure-registries": [
         "nexus-docker-registry.openshift.atliwest.local",

@@ -1,0 +1,4 @@
+- name: "Fallback to iptables-legacy because doesn't support the new one"
+  alternatives:
+    name: iptables
+    path: /usr/sbin/iptables-legacy

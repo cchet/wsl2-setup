@@ -30,7 +30,7 @@
       - curl
       - gnupg-agent
       - software-properties-common
-
+    
 - name: "Copy root files"
   template:
     src: "{{ item.src }}"
@@ -51,3 +51,7 @@
   with_items: "{{ users }}"
   loop_control:
     loop_var: user
+
+- name: "Debian specific setup"
+  include: setup-debian.yml
+  when: os == 'debian'
