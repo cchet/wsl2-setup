@@ -1,0 +1,4 @@
+- name: "Install Kubectl"
+  include: install.yml
+  vars:
+    state: present

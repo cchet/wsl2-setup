@@ -40,8 +40,12 @@ The following roles are supported by this ansible bundle.
   Delegates to the proper ``buildah-<OS>`` role depending on the set variable ``os`` 
 * ``buildah-debian`` +
   Install the tool Buildah globally on a Debian OS
+* ``kubectl`` +
+  Delegates to the proper ``buildah-<OS>`` role depending on the set variable ``os`` 
+* ``kubectl-debian-ubuntu`` +
+  Install the tool Kubectl globally on a Debian/Ubuntu OS
 
-=== Execute 
+=== Configuration 
 
 Create a ``variables.yml`` file in the ``./ansible`` directory which contains the necessary variables. You can have multiple variable definitions but you should name them ``<PREFIX>variables.[yml|yaml]`` which are excluded for git.
 
@@ -64,30 +68,38 @@ users:
     - additional_user2
 ----
 
-Execute the following command in the directory link:./ansible[./ansible] to setup the WSL2 Debian instance with Ansible.
+TIP: You can reach the Windows folders under ``/mnt/c/..``. 
 
-.Shell command for executing the bundle
+=== Playbooks 
+
+Execute the following commands in the directory link:./ansible[./ansible].
+
+.Setup the WSL2 instance
 [code, bash]
 ----
 ansible-playbook site.yml --ask-become-pass -e @variables.yml -e id_rsa_pass=<SSH_PRIVATE_KEY_PASS>
 ----
 
-TIP: You can reach the Windows folders under ``/mnt/c/..``. 
+.Start the Docker Service (after each WSL2 start)
+[code, bash]
+----
+ansible-playbook start-docker.yml --ask-become-pass -e @variables.yml
+----
 
 == Docker
 
 You need to start docker manually since we don't have a systemd managed OS, meaning the OS never starts up.
 
-.Start the Docker service
-[source,bash]
------
-sudo service docker start
------
-
 .Test if Docker is up and running
 [source,bash]
 -----
 docker ps
+-----
+
+.Test if Docker works
+[source,bash]
+-----
+docker run hello-world
 -----
 
 == Kind
@@ -100,7 +112,7 @@ See link:https://kind.sigs.k8s.io/docs[Kind Doc] for the documentation of kind.
 ``Podman`` is a tool similar to Docker but doesn't rely on a daemon to manage containers. +
 See link:https://podman.io/[Podman doc] for the documentation of Podman.
 
-.Test if Podmanis working
+.Test if Podman is working
 [source,bash]
 -----
 podman run hello-world

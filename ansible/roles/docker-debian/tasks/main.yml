@@ -5,3 +5,6 @@
     
 - name: "Configure Docker"
   include: configure.yml
+
+- name: "Fix systemd mount"
+  include: fix-systemd-mount.yml

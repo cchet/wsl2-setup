@@ -1,0 +1,14 @@
+- hosts: 
+    - localhost
+  remote_user: "{{ sudo_user }}"
+  gather_facts: yes
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: "Fix systemd mount obn Debian"
+      include_tasks: "roles/docker-debian/tasks/fix-systemd-mount.yml"
+      when: os == 'debian'
+    - name: "Start docker"
+      service:
+        name: docker
+        state: started

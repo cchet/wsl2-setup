@@ -11,3 +11,4 @@
     - podman
     - docker
     - buildah 
+    - kubectl

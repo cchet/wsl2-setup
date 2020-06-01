@@ -1,0 +1,15 @@
+- name: "Create '/sys/fs/cgroup/systemd'"
+  file:
+    path: "/sys/fs/cgroup/systemd"
+    state: "directory"
+    owner: "root"
+    group: "root"
+    mode: 0755
+
+- name: "Mount '/sys/fs/cgroup/systemd'"
+  mount:
+    path: cgroup
+    src: /sys/fs/cgroup/systemd
+    fstype: cgroup
+    opts: none,name=systemd
+    state: mounted
