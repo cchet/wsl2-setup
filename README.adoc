@@ -2,6 +2,10 @@
 
 This repository holds the resources for the setting up a WSL2 instance.
 
+== WSL2 configuration
+
+You should restrict the available resources to your WSL2 instance, otherwise the wSL2 instance could consume up to 80% of your overall resources. The configuration is provided by the file ``~/.wsl2config`` See link:https://docs.microsoft.com/en-us/windows/wsl/wsl-config[here] for the available options.
+
 == Ansible
 
 === Setup
