@@ -56,7 +56,7 @@ The following roles are supported by this ansible bundle.
 Create a ``variables.yml`` file in the ``./ansible`` directory which contains the necessary variables. You can have multiple variable definitions but you should name them ``<PREFIX>variables.[yml|yaml]`` which are excluded for git.
 
 .YAML configuration file 
-[code, yaml]
+[source, yaml]
 ----
 # The OS you want to install docker on [debian]
 os: ""
