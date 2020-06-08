@@ -22,6 +22,8 @@
       - curl
       - gnupg-agent
       - software-properties-common
+      - gnupg2 
+      - pass
 
 - name: "Debian specific setup"
   include: setup-debian.yml
