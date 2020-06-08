@@ -3,6 +3,16 @@
     name: "{{ username }}"
     state: present
 
+- name: "Create user '{{ username }}' directories"
+  file:
+    path: "/home/{{ username }}/{{ item }}"
+    state: "directory"
+    owner: "{{ username }}"
+    group: "{{ group }}"
+    mode: 0755
+  with_items:
+    - ".local/bin"
+
 - name: "Create user '{{ username }}'"
   user:
      name: "{{ username }}"
